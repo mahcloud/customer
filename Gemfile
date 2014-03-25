@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.3'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
+gem 'activerecord-session_store'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -30,6 +31,18 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :test, :development do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'fabrication'
+  gem 'shoulda'
+  gem 'simplecov'
+  gem 'database_cleaner', :require => false
+  gem 'awesome_print'
+  gem 'spring'
+  gem "spring-commands-rspec", require: false
 end
 
 # Use ActiveModel has_secure_password

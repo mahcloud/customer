@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Customer::Application.load_tasks
+Patron::Application.load_tasks

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Customer::Application.config.secret_key_base = '3bee7f97dd3536c26c4b28261a94dd40492f78b1a087ae31afb81c17965060da50d654be53ed56d4d14346b36e2498a405c3066d0b63df75c51b036742221014'
+Patron::Application.config.secret_key_base = '3bee7f97dd3536c26c4b28261a94dd40492f78b1a087ae31afb81c17965060da50d654be53ed56d4d14346b36e2498a405c3066d0b63df75c51b036742221014'
