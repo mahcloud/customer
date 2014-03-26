@@ -1,0 +1,8 @@
+-if object.errors.any?
+  .errors
+    %h2 #{pluralize(object.errors.count, "error")} prohibited this #{name} from being saved:
+    .alert-box.form_error{'data-alert' => true}
+      -object.errors.full_messages.each do |msg|
+        = msg
+        %br
+      = link_to raw('&times;'), '#', :class => 'close'

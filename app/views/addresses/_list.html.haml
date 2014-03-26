@@ -1,0 +1,7 @@
+#addresses
+  - @addresses.each do |address|
+    .address{:id => "address_#{address.id}"}
+      = render partial: 'addresses/formatted', locals: { address: address }
+      .address_buttons
+        = link_to image_tag('/address_book/assets/address_book_edit.png', alt: 'Edit'), edit_address_path(address)
+        = link_to image_tag('/address_book/assets/address_book_delete.png', alt: 'Destroy'), destroy_address_path(address), method: :delete, data: { confirm: 'Are you sure you want to delete this address?'}, :type => :image

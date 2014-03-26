@@ -1,0 +1,21 @@
+.address_line_items
+  #shipping_name.address_line_item= address.name
+  - unless address.company.to_s == ''
+    #shipping_company.address_line_item= address.company
+  #shipping_address_1.address_line_item= address.address_1
+  - unless address.address_2.to_s == ''
+    #shipping_address_2.address_line_item= address.address_2
+  - unless address.address_3.to_s == ''
+    #shipping_address_3.address_line_item= address.address_3
+  .address_line_item
+    %span#shipping_city>= address.city
+    ,
+    - unless address.state.nil?
+      %span#shipping_state= address.state
+    %span#shipping_zip_code= address.zip_code
+    USA
+  .address_line_item
+    %span#shipping_phone= number_to_phone address.phone
+    - unless address.ext.to_s == ''
+      x
+      %span#shipping_extension= address.extension

@@ -1,0 +1,78 @@
+.field
+  .field_label
+    %span{:class => "required"} *
+    = f.label :name
+  .field_field
+    = f.text_field :name
+
+.field
+  .field_label
+    = f.label :nickname
+  .field_field
+    = f.text_field :nickname
+
+.field
+  .field_label
+    = f.label :company
+  .field_field
+    = f.text_field :company
+
+.field
+  .field_label
+    = f.label :attention
+  .field_field
+    = f.text_field :attention
+
+.field
+  .field_label
+    = f.label :phone
+  .field_field.address_phone
+    = f.text_field :phone
+  .field_label.address_extension
+    = f.label :ext, 'Ext'
+  .field_field.address_extension_field
+    = f.text_field :ext
+
+.field
+  .field_label
+    %span{:class => "required"} *
+    = f.label :address_1, 'Street Address 1'
+  .field_field
+    = f.text_field :address_1
+
+.field
+  .field_label
+    = f.label :address_2
+  .field_field
+    = f.text_field :address_2
+
+.field
+  .field_label
+    = f.label :address_3
+  .field_field
+    = f.text_field :address_3
+
+.field
+  .field_label
+    %span{:class => "required"} *
+    = f.label :city
+  .field_field
+    = f.text_field :city
+
+.field
+  .field_label
+    %span{:class => "required"} *
+    = f.label :state
+  .field_field.address_state
+    = f.text_field :state
+  .field_label.address_zip_code
+    %span{:class => "required"} *
+    = f.label :zip_code, 'Zip Code'
+  .field_field.address_zip_code_field
+    = f.text_field :zip_code
+
+.field
+  .field_label
+    = f.label :country
+  .field_field.address_country_field
+    = f.text_field :country

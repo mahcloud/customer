@@ -40,6 +40,32 @@ describe AddressesController do
     request.cookies['session_id'] = user_session.token
   end
 
+  describe "#index" do
+    let!(:address) { Fabricate(:address, :customer_id => customer.id) }
+
+    it "should list all addresses" do
+      get :index
+      assigns(:addresses).length.should == 1
+      assigns(:addresses)[0].name.should == address.name
+    end
+  end
+
+  describe "#new" do
+    it "should set address" do
+      get :new
+      assigns(:address).id.should == nil
+    end
+  end
+
+  describe "#edit" do
+    let(:address) { Fabricate(:address, :customer_id => customer.id) }
+
+    it "should set address" do
+      get :edit, :id => address.id
+      assigns(:address).id.should == address.id
+    end
+  end
+
   describe "#create" do
     context "customer" do
       it "should create the address" do
@@ -48,7 +74,7 @@ describe AddressesController do
 
       it "should redirect" do
         post :create, :address => params
-        response.should redirect_to AddressesController::ADDRESS_LIST_PAGE
+        response.should redirect_to addresses_path
       end
     end
 
@@ -59,7 +85,7 @@ describe AddressesController do
 
       it "should redirect" do
         post :create, :address => invalid_params
-        response.should redirect_to AddressesController::ADDRESS_FORM_PAGE
+        response.should render_template("addresses/new")
       end
     end
 
@@ -72,7 +98,7 @@ describe AddressesController do
 
       it "should redirect" do
         post :create, :customer_id => customer.id, :address => params
-        response.should redirect_to AddressesController::ADDRESS_LIST_PAGE
+        response.should redirect_to addresses_path
       end
     end
   end
@@ -90,7 +116,7 @@ describe AddressesController do
 
       it "should redirect" do
         post :update, :id => address.id, :address => params
-        response.should redirect_to AddressesController::ADDRESS_LIST_PAGE
+        response.should redirect_to addresses_path
       end
     end
 
@@ -103,7 +129,7 @@ describe AddressesController do
 
       it "should redirect" do
         post :update, :id => address.id, :address => invalid_params
-        response.should redirect_to AddressesController::ADDRESS_FORM_PAGE
+        response.should render_template("addresses/edit")
       end
     end
 
@@ -116,7 +142,7 @@ describe AddressesController do
 
       it "should redirect" do
         post :update, :id => unauthorized_address.id, :address => params
-        response.should redirect_to AddressesController::ADDRESS_LIST_PAGE
+        response.should redirect_to addresses_path
       end
     end
 
@@ -131,7 +157,7 @@ describe AddressesController do
 
       it "should redirect" do
         post :update, :id => address.id, :customer_id => customer.id, :address => params
-        response.should redirect_to AddressesController::ADDRESS_LIST_PAGE
+        response.should redirect_to addresses_path
       end
     end
   end

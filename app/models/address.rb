@@ -10,5 +10,6 @@ class Address < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :zip_code, presence: true
+  validates_length_of :zip_code, :minimum => 5, :maximum => 5
   validates :country, presence: true
 end

@@ -1,0 +1,17 @@
+= form_for @address, :authenticity_token => false do |f|
+  = render '/shared/form_error_messages', :object => @address, :name => 'address'
+
+  .address_form
+    = render 'addresses/fields', :f => f
+
+    .field
+      .field_field
+        = hidden_field_tag :address_type, @address_type
+
+    .required_text
+      fields marked 
+      .required *
+      are required
+
+    .actions
+      = f.submit
