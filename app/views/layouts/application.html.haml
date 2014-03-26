@@ -1,0 +1,39 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "America's Largest Online Light Bulb Retailer! Thousands of Halogens, CFLs, Automotive Bulbs, Christmas Lights, LEDs, Rope Lights, and Electrical Supplies.", :name => "description"}/
+    %meta{:content => "Light bulbs, halogen lightbulbs, rope lights, christmas lights, ballasts, fluorescent bulbs", :name => "keywords"}/
+
+    = stylesheet_link_tag "application", :media => "all"
+    = yield :stylesheet
+
+    = javascript_include_tag "application"
+    = yield :javascript
+
+    = favicon_link_tag 'favicon.ico'
+  %body
+    #Container
+      #BodyContainer
+        .BodyContainerTop
+        .BodyContainerMidWide
+          #BodyWide
+            .account_tabs
+              #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+                %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
+                  %li.ui-state-default.ui-corner-top
+                    %a{:href => ""} Order History
+                  %li.ui-state-default.ui-corner-top
+                    %a{:href => ""} Product History
+                  %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active
+                    %a{:href => ""} Address Book
+                  %li.ui-state-default.ui-corner-top
+                    %a{:href => ""} Payment Methods
+                  %li.ui-state-default.ui-corner-top
+                    %a{:href => ""} Quotes
+                  %li.ui-state-default.ui-corder-top
+                    %a{:href => "/customer/detail/shipping/"} Shipping
+                #tab_html.ui-tabs-panel.ui-widget-content.ui-corner-bottom
+                  .tab_wrap= yield
+                %br{:clear => "all"}
+          %br{:clear => "all"}
